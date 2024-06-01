@@ -4,7 +4,8 @@
     "python@3.12.3",
     "pipx@1.4.3",
     "ffmpeg@6.1.1",
-    "nodejs@22.2.0"
+    "nodejs@22.2.0",
+    "teller@2.0.7"
   ],
   "shell": {
     "init_hook": [
