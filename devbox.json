@@ -13,8 +13,8 @@
       "eval \"$(teller sh)\""
     ],
     "scripts": {
-      "test": [
-        "echo \"Error: no test specified\" && exit 1"
+      "tlfc_extract_wisdom": [
+        "cat $1 | fabric --model gpt-4o -sp extract_wisdom"
       ]
     }
   }
