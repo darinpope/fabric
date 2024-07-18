@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.7/.schema/devbox.schema.json",
   "packages": [
-    "python@3.12.3",
+    "python@3.12.4",
     "pipx@1.6.0",
     "ffmpeg@6.1.1",
-    "nodejs@22.2.0",
+    "nodejs@22.3.0",
     "teller@1.5.6"
   ],
   "shell": {
