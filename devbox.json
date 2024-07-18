@@ -15,6 +15,11 @@
     "scripts": {
       "tlfc_extract_wisdom": [
         "cat $1 | fabric --model gpt-4o -sp extract_wisdom"
+      ],
+      "update-fabric": [
+        "pipx install . --force",
+        "fabric --update",
+        "echo 'now close and restart your shell'"
       ]
     }
   }
