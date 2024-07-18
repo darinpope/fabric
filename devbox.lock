@@ -214,67 +214,67 @@
         }
       }
     },
-    "pipx@1.4.3": {
-      "last_modified": "2024-05-22T06:18:38Z",
-      "resolved": "github:NixOS/nixpkgs/3f316d2a50699a78afe5e77ca486ad553169061e#pipx",
+    "pipx@1.6.0": {
+      "last_modified": "2024-07-07T07:43:47Z",
+      "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#pipx",
       "source": "devbox-search",
-      "version": "1.4.3",
+      "version": "1.6.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/wxphvh1yvzlng07dcfqk9n9d4dfdikkp-python3.11-pipx-1.4.3",
+              "path": "/nix/store/a9s0wfxkdrq6nv7hbxgq5b476h11wxwv-python3.12-pipx-1.6.0",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/75mxb04abkzy6kjlmajb22043v6ah4jr-python3.11-pipx-1.4.3-dist"
+              "path": "/nix/store/vwp8ph2y4k4mi82gy6n9jkxiai673nm1-python3.12-pipx-1.6.0-dist"
             }
           ],
-          "store_path": "/nix/store/wxphvh1yvzlng07dcfqk9n9d4dfdikkp-python3.11-pipx-1.4.3"
+          "store_path": "/nix/store/a9s0wfxkdrq6nv7hbxgq5b476h11wxwv-python3.12-pipx-1.6.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/nhlj49sz8d6ff54qi1b5lqilrkrh82j8-python3.11-pipx-1.4.3",
+              "path": "/nix/store/zm6543n8d86iqpb5l54mj3sf5vcn6dwl-python3.12-pipx-1.6.0",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/cknk6jnnbb0hqf3zyqznah9i9qjhq70v-python3.11-pipx-1.4.3-dist"
+              "path": "/nix/store/dvr6sn4g4dpz29qxckdfvqlfp8rw6ya3-python3.12-pipx-1.6.0-dist"
             }
           ],
-          "store_path": "/nix/store/nhlj49sz8d6ff54qi1b5lqilrkrh82j8-python3.11-pipx-1.4.3"
+          "store_path": "/nix/store/zm6543n8d86iqpb5l54mj3sf5vcn6dwl-python3.12-pipx-1.6.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/1gm46p4w4kh9rvcydiv3l3nllhk148rl-python3.11-pipx-1.4.3",
+              "path": "/nix/store/bidzkscayc2nihyiv0b8jykgrcbdb5qz-python3.12-pipx-1.6.0",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/qvczb3mnxax6akfgf7xd3gpqx4dp8ws2-python3.11-pipx-1.4.3-dist"
+              "path": "/nix/store/w8bysygv0ljbi2j3w5cmvjad1cd3y9ws-python3.12-pipx-1.6.0-dist"
             }
           ],
-          "store_path": "/nix/store/1gm46p4w4kh9rvcydiv3l3nllhk148rl-python3.11-pipx-1.4.3"
+          "store_path": "/nix/store/bidzkscayc2nihyiv0b8jykgrcbdb5qz-python3.12-pipx-1.6.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/4d63b8x66mf3y37za3i5gmazn5xq82sa-python3.11-pipx-1.4.3",
+              "path": "/nix/store/3vl2xcdp94z0p08w7pfzhf4sp0pbmpd7-python3.12-pipx-1.6.0",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/44kd2mkap2ypfh7vjzv9cdsikbl7520l-python3.11-pipx-1.4.3-dist"
+              "path": "/nix/store/hxx379d3dsyy2rqm8cj2b818fxf1silj-python3.12-pipx-1.6.0-dist"
             }
           ],
-          "store_path": "/nix/store/4d63b8x66mf3y37za3i5gmazn5xq82sa-python3.11-pipx-1.4.3"
+          "store_path": "/nix/store/3vl2xcdp94z0p08w7pfzhf4sp0pbmpd7-python3.12-pipx-1.6.0"
         }
       }
     },
