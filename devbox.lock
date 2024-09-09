@@ -1,337 +1,51 @@
 {
   "lockfile_version": "1",
   "packages": {
-    "ffmpeg@6.1.1": {
-      "last_modified": "2024-05-26T09:30:02Z",
-      "resolved": "github:NixOS/nixpkgs/e2dd4e18cc1c7314e24154331bae07df76eb582f#ffmpeg",
+    "go@1.22.6": {
+      "last_modified": "2024-08-31T10:12:23Z",
+      "resolved": "github:NixOS/nixpkgs/5629520edecb69630a3f4d17d3d33fc96c13f6fe#go",
       "source": "devbox-search",
-      "version": "6.1.1",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/s3h5z4bwr5b9jhii6qcpfv2v33cqd69f-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/vbknl27vs9dz0ikfbpbmh23hlh5f99hc-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/5ws2ksq453pxppii4dcap1g59ldks0a5-ffmpeg-6.1.1-dev"
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/m9cl641c4k8p74mb0x48v3qbxi5xbnlk-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/fy17widvr225nrghvwl78yqsrmpf6pib-ffmpeg-6.1.1-lib"
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/ajqarrhkni8p7kwr0zqmfdalflnmp5hs-ffmpeg-6.1.1"
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/0ddw2vd8kx2zbca03w2w5vnaap9py1ls-ffmpeg-6.1.1-data"
-            }
-          ],
-          "store_path": "/nix/store/s3h5z4bwr5b9jhii6qcpfv2v33cqd69f-ffmpeg-6.1.1-bin"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/26sh0a2vz4xkvk7ajzcy8yn9bf3hxjw8-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/v25j5hlaz4hikrqs15vqg7la33a1qcc4-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/lnfkg5x9gsfphc2l8drgx09vl421kpr6-ffmpeg-6.1.1-data"
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/4sd4nngbq7jdnikszrd0hhp4yrkgslyy-ffmpeg-6.1.1-dev"
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/bwjs57vgin39hlcmr46d2gwdf5y0xz5d-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/7swkz8gvifph8x3mpdcv355z46mj02ld-ffmpeg-6.1.1-lib"
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/r620a69ngdh4378j81sdpi0z1gh2mc01-ffmpeg-6.1.1"
-            }
-          ],
-          "store_path": "/nix/store/26sh0a2vz4xkvk7ajzcy8yn9bf3hxjw8-ffmpeg-6.1.1-bin"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/c8swfr4rjav5yfds4rfjvz8zl7r4a05a-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/0h2drs21j72xiy7b1zfynyhwdyscpv9a-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/1rx61k706s4kfkmyd557mjbfc156m41w-ffmpeg-6.1.1-data"
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/f262k2i0l67qdypkb9yz5275zzpk3qks-ffmpeg-6.1.1-dev"
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/dz7p0wfi1i9zi98m8zdsjm0hwz56m23n-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/yd3zqc5c0cgfsfndf560lvw9iq1miaid-ffmpeg-6.1.1-lib"
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/gw0yv5gnk56fz6xnsd0xmb0j0ci0hpgb-ffmpeg-6.1.1"
-            }
-          ],
-          "store_path": "/nix/store/c8swfr4rjav5yfds4rfjvz8zl7r4a05a-ffmpeg-6.1.1-bin"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/3zc5jbvqzrn8zmva4fx5p0nh4yy03wk4-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/jxv18sbi5vmhi0nxdn8nl8jnz6nd4djg-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/8c6k4np7z9sdfx390qw3g1w2q3awmgz1-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/0qs6lqxic761r65ffdv6jqn6yrsjsqn0-ffmpeg-6.1.1-lib"
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/7pjg2bhyigxn18xz9qk9yyqqv3fnmyvd-ffmpeg-6.1.1"
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/71hcrwn1g6ncki859v14jq18i8fx84sk-ffmpeg-6.1.1-data"
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/wcki8li0sdcx3gks1n44fjp1qqy1nm1s-ffmpeg-6.1.1-dev"
-            }
-          ],
-          "store_path": "/nix/store/3zc5jbvqzrn8zmva4fx5p0nh4yy03wk4-ffmpeg-6.1.1-bin"
-        }
-      }
-    },
-    "nodejs@22.3.0": {
-      "last_modified": "2024-07-10T06:55:44Z",
-      "plugin_version": "0.0.2",
-      "resolved": "github:NixOS/nixpkgs/aa9461550594533c29866d42f861b6ff079a7fb6#nodejs_22",
-      "source": "devbox-search",
-      "version": "22.3.0",
+      "version": "1.22.6",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/cpqfn567chsy7mslcfwnijsn6mq82lcq-nodejs-22.3.0",
+              "path": "/nix/store/bman2jjx2ykfclj3g0wb89cxyzqygh8y-go-1.22.6",
               "default": true
-            },
-            {
-              "name": "libv8",
-              "path": "/nix/store/mfjmdqb1sxxm7r4d4px5r3p6m378kzy5-nodejs-22.3.0-libv8"
             }
           ],
-          "store_path": "/nix/store/cpqfn567chsy7mslcfwnijsn6mq82lcq-nodejs-22.3.0"
+          "store_path": "/nix/store/bman2jjx2ykfclj3g0wb89cxyzqygh8y-go-1.22.6"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/q7cgrvb6clq0pdp5hlwmq2lldzkl3fmj-nodejs-22.3.0",
+              "path": "/nix/store/gnm672jywl1b778ql6pf57xka45452b6-go-1.22.6",
               "default": true
-            },
-            {
-              "name": "libv8",
-              "path": "/nix/store/5df5695winsxzf80q6z0m35zy3p60yw1-nodejs-22.3.0-libv8"
             }
           ],
-          "store_path": "/nix/store/q7cgrvb6clq0pdp5hlwmq2lldzkl3fmj-nodejs-22.3.0"
+          "store_path": "/nix/store/gnm672jywl1b778ql6pf57xka45452b6-go-1.22.6"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/hd619h1mh6lcmv2kw6nij9xa0zf7ybmr-nodejs-22.3.0",
+              "path": "/nix/store/qvr3slzx5av20xkw6i97yz7wla9sf4nc-go-1.22.6",
               "default": true
-            },
-            {
-              "name": "libv8",
-              "path": "/nix/store/mipa00s8bq87h3p3allndvg43cpggz3w-nodejs-22.3.0-libv8"
             }
           ],
-          "store_path": "/nix/store/hd619h1mh6lcmv2kw6nij9xa0zf7ybmr-nodejs-22.3.0"
+          "store_path": "/nix/store/qvr3slzx5av20xkw6i97yz7wla9sf4nc-go-1.22.6"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/bmvx7ww7qfksjqsckmivkg3mqvjscfh8-nodejs-22.3.0",
-              "default": true
-            },
-            {
-              "name": "libv8",
-              "path": "/nix/store/w28gijyq24mmk1676gpbxw2xrkysxx1i-nodejs-22.3.0-libv8"
-            }
-          ],
-          "store_path": "/nix/store/bmvx7ww7qfksjqsckmivkg3mqvjscfh8-nodejs-22.3.0"
-        }
-      }
-    },
-    "pipx@1.6.0": {
-      "last_modified": "2024-07-07T07:43:47Z",
-      "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#pipx",
-      "source": "devbox-search",
-      "version": "1.6.0",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/a9s0wfxkdrq6nv7hbxgq5b476h11wxwv-python3.12-pipx-1.6.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/vwp8ph2y4k4mi82gy6n9jkxiai673nm1-python3.12-pipx-1.6.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/a9s0wfxkdrq6nv7hbxgq5b476h11wxwv-python3.12-pipx-1.6.0"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/zm6543n8d86iqpb5l54mj3sf5vcn6dwl-python3.12-pipx-1.6.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/dvr6sn4g4dpz29qxckdfvqlfp8rw6ya3-python3.12-pipx-1.6.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/zm6543n8d86iqpb5l54mj3sf5vcn6dwl-python3.12-pipx-1.6.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/bidzkscayc2nihyiv0b8jykgrcbdb5qz-python3.12-pipx-1.6.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/w8bysygv0ljbi2j3w5cmvjad1cd3y9ws-python3.12-pipx-1.6.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/bidzkscayc2nihyiv0b8jykgrcbdb5qz-python3.12-pipx-1.6.0"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/3vl2xcdp94z0p08w7pfzhf4sp0pbmpd7-python3.12-pipx-1.6.0",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/hxx379d3dsyy2rqm8cj2b818fxf1silj-python3.12-pipx-1.6.0-dist"
-            }
-          ],
-          "store_path": "/nix/store/3vl2xcdp94z0p08w7pfzhf4sp0pbmpd7-python3.12-pipx-1.6.0"
-        }
-      }
-    },
-    "python@3.12.4": {
-      "last_modified": "2024-07-07T07:43:47Z",
-      "plugin_version": "0.0.3",
-      "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#python3",
-      "source": "devbox-search",
-      "version": "3.12.4",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/3swy1vadi125g0c1vxqp8ykdr749803j-python3-3.12.4",
+              "path": "/nix/store/6rybf4g5b77kz27k07avr7qd44ssw3l2-go-1.22.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/3swy1vadi125g0c1vxqp8ykdr749803j-python3-3.12.4"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/sz2facg15yq3ziqkidb1dkkglwzkkg8a-python3-3.12.4",
-              "default": true
-            },
-            {
-              "name": "debug",
-              "path": "/nix/store/19vjjqg7jbfblqapf63nm9ich1xdq9dx-python3-3.12.4-debug"
-            }
-          ],
-          "store_path": "/nix/store/sz2facg15yq3ziqkidb1dkkglwzkkg8a-python3-3.12.4"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/3y5wy1i9nq5293knm23mxsj5l6w41h2l-python3-3.12.4",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/3y5wy1i9nq5293knm23mxsj5l6w41h2l-python3-3.12.4"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/z7xxy35k7620hs6fn6la5fg2lgklv72l-python3-3.12.4",
-              "default": true
-            },
-            {
-              "name": "debug",
-              "path": "/nix/store/3x6jqv5yw212v8rlwql88cn94dginq32-python3-3.12.4-debug"
-            }
-          ],
-          "store_path": "/nix/store/z7xxy35k7620hs6fn6la5fg2lgklv72l-python3-3.12.4"
+          "store_path": "/nix/store/6rybf4g5b77kz27k07avr7qd44ssw3l2-go-1.22.6"
         }
       }
     },
