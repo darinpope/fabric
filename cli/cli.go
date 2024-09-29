@@ -12,11 +12,14 @@ import (
 )
 
 // Cli Controls the cli. It takes in the flags and runs the appropriate functions
-func Cli() (message string, err error) {
+func Cli(version string) (message string, err error) {
 	var currentFlags *Flags
 	if currentFlags, err = Init(); err != nil {
-		// we need to reset error, because we don't want to show double help messages
-		err = nil
+		return
+	}
+
+	if currentFlags.Version {
+		fmt.Println(version)
 		return
 	}
 
@@ -95,6 +98,18 @@ func Cli() (message string, err error) {
 		return
 	}
 
+	// if the wipe context flag is set, run the wipe context function
+	if currentFlags.WipeContext != "" {
+		err = fabricDb.Contexts.Delete(currentFlags.WipeContext)
+		return
+	}
+
+	// if the wipe session flag is set, run the wipe session function
+	if currentFlags.WipeSession != "" {
+		err = fabricDb.Sessions.Delete(currentFlags.WipeSession)
+		return
+	}
+
 	// if the interactive flag is set, run the interactive function
 	// if currentFlags.Interactive {
 	// 	interactive.Interactive()
@@ -121,11 +136,7 @@ func Cli() (message string, err error) {
 
 			fmt.Println(transcript)
 
-			if currentFlags.Message != "" {
-				currentFlags.Message = currentFlags.Message + "\n" + transcript
-			} else {
-				currentFlags.Message = transcript
-			}
+			currentFlags.AppendMessage(transcript)
 		}
 
 		if currentFlags.YouTubeComments {
@@ -138,15 +149,40 @@ func Cli() (message string, err error) {
 
 			fmt.Println(commentsString)
 
-			if currentFlags.Message != "" {
-				currentFlags.Message = currentFlags.Message + "\n" + commentsString
-			} else {
-				currentFlags.Message = commentsString
-			}
+			currentFlags.AppendMessage(commentsString)
 		}
 
 		if currentFlags.Pattern == "" {
 			// if the pattern flag is not set, we wanted only to grab the transcript or comments
+			return
+		}
+	}
+
+	if (currentFlags.ScrapeURL != "" || currentFlags.ScrapeQuestion != "") && fabric.Jina.IsConfigured() {
+		// Check if the scrape_url flag is set and call ScrapeURL
+		if currentFlags.ScrapeURL != "" {
+			if message, err = fabric.Jina.ScrapeURL(currentFlags.ScrapeURL); err != nil {
+				return
+			}
+
+			fmt.Println(message)
+
+			currentFlags.AppendMessage(message)
+		}
+
+		// Check if the scrape_question flag is set and call ScrapeQuestion
+		if currentFlags.ScrapeQuestion != "" {
+			if message, err = fabric.Jina.ScrapeQuestion(currentFlags.ScrapeQuestion); err != nil {
+				return
+			}
+
+			fmt.Println(message)
+
+			currentFlags.AppendMessage(message)
+		}
+
+		if currentFlags.Pattern == "" {
+			// if the pattern flag is not set, we wanted only to grab the url or get the answer to the question
 			return
 		}
 	}

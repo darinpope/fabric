@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log/slog"
 
 	"github.com/danielmiessler/fabric/common"
 	"github.com/samber/lo"
@@ -82,7 +83,13 @@ func (o *Client) SendStream(
 	for {
 		var response openai.ChatCompletionStreamResponse
 		if response, err = stream.Recv(); err == nil {
-			channel <- response.Choices[0].Delta.Content
+			if len(response.Choices) > 0 {
+				channel <- response.Choices[0].Delta.Content
+			} else {
+				channel <- "\n"
+				close(channel)
+				break
+			}
 		} else if errors.Is(err, io.EOF) {
 			channel <- "\n"
 			close(channel)
@@ -103,7 +110,10 @@ func (o *Client) Send(ctx context.Context, msgs []*common.Message, opts *common.
 	if resp, err = o.ApiClient.CreateChatCompletion(ctx, req); err != nil {
 		return
 	}
-	ret = resp.Choices[0].Message.Content
+	if len(resp.Choices) > 0 {
+		ret = resp.Choices[0].Message.Content
+		slog.Debug("SystemFingerprint: " + resp.SystemFingerprint)
+	}
 	return
 }
 
@@ -120,13 +130,25 @@ func (o *Client) buildChatCompletionRequest(
 			Messages: messages,
 		}
 	} else {
-		ret = goopenai.ChatCompletionRequest{
-			Model:            opts.Model,
-			Temperature:      float32(opts.Temperature),
-			TopP:             float32(opts.TopP),
-			PresencePenalty:  float32(opts.PresencePenalty),
-			FrequencyPenalty: float32(opts.FrequencyPenalty),
-			Messages:         messages,
+		if opts.Seed == 0 {
+			ret = goopenai.ChatCompletionRequest{
+				Model:            opts.Model,
+				Temperature:      float32(opts.Temperature),
+				TopP:             float32(opts.TopP),
+				PresencePenalty:  float32(opts.PresencePenalty),
+				FrequencyPenalty: float32(opts.FrequencyPenalty),
+				Messages:         messages,
+			}
+		} else {
+			ret = goopenai.ChatCompletionRequest{
+				Model:            opts.Model,
+				Temperature:      float32(opts.Temperature),
+				TopP:             float32(opts.TopP),
+				PresencePenalty:  float32(opts.PresencePenalty),
+				FrequencyPenalty: float32(opts.FrequencyPenalty),
+				Messages:         messages,
+				Seed:             &opts.Seed,
+			}
 		}
 	}
 	return

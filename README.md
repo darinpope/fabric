@@ -14,6 +14,7 @@
 <h4><code>fabric</code> is an open-source framework for augmenting humans using AI.</h4>
 </p>
 
+[Updates](#updates) •
 [What and Why](#whatandwhy) •
 [Philosophy](#philosophy) •
 [Installation](#Installation) •
@@ -28,6 +29,7 @@
 
 ## Navigation
 
+- [Updates](#updates)
 - [What and Why](#what-and-why)
 - [Philosophy](#philosophy)
   - [Breaking problems into components](#breaking-problems-into-components)
@@ -46,16 +48,18 @@
 
 <br />
 
+## Updates
+
 > [!NOTE] 
-August 20, 2024 — We have migrated to Go, and the transition has been pretty smooth! The biggest thing to know is that **the previous installation instructions in the various Fabric videos out there will no longer work** because they were for the legacy (Python) version. Check the new [install instructions](#Installation) below.
->
->
-> **The following command line options were changed during the migration to Go:**
+September 15, 2024 — Lots of new stuff!
+> * Fabric now supports calling the new `o1-preview` model using the `-r` switch (which stands for raw. Normal queries won't work with `o1-preview` because they disabled System access and don't allow us to set `Temperature`.
+> * We have early support for Raycast! Under the `/patterns` directory there's a `raycast` directory with scripts that can be called from Raycast. If you add a scripts directory within Raycast and point it to your `~/.config/fabric/patterns/raycast` directory, you'll then be able to 1) invoke Raycast, type the name of the script, and then 2) paste in the content to be passed, and the results will return in Raycast. There's currently only one script in there but I am (Daniel) adding more.
+> * **Go Migration: The following command line options were changed during the migration to Go:**
 > * You now need to use the -c option instead of -C to copy the result to the clipboard.
 > * You now need to use the -s option instead of -S to stream results in realtime.
-> * The following command line options have been removed --agents (-a), --gui, --clearsession, --remoteOllamaServer, and --sessionlog options 
-> * You can now use --Setup (-S) to configure an Ollama server.
-> * **Please be patient while our developers rewrite the gui in go**
+> * The following command line options have been removed `--agents` (-a), `--gui`, `--clearsession`, `--remoteOllamaServer`, and `--sessionlog`
+> * You can now use (-S) to configure an Ollama server.
+> * **We're working on a GUI rewrite in Go as well**
 
 ## Intro videos
 
@@ -109,6 +113,29 @@ Fabric has Patterns for all sorts of life and work activities, including:
 
 ## Installation
 
+To install Fabric, you can use the latest release binaries or install it from the source.
+
+### Get Latest Release Binaries
+
+```bash
+# Windows:
+curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-windows-amd64.exe > fabric.exe && fabric.exe --version
+
+# MacOS (arm64):
+curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-darwin-arm64 > fabric && chmod +x fabric && ./fabric --version
+
+# MacOS (amd64): 
+curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-darwin-amd64 > fabric && chmod +x fabric && ./fabric --version
+
+# Linux (amd64): 
+curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-amd64 > fabric && chmod +x fabric && ./fabric --version
+
+# Linux (arm64):
+curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-arm64 > fabric && chmod +x fabric && ./fabric --version
+```
+
+### From Source
+
 To install Fabric, [make sure Go is installed](https://go.dev/doc/install), and then run the following command.
 
 ```bash
@@ -133,9 +160,9 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 for Apple Silicon based macs
 ```bash
 # Golang environment variables
-export GOROOT=/opt/homebrew/bin/go
+export GOROOT=$(brew --prefix go)/libexec
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH:
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 ```
 
 ### Setup
@@ -169,7 +196,7 @@ Then [set your environmental variables](#environmental-variables) as shown above
 
 The great thing about Go is that it's super easy to upgrade. Just run the same command you used to install it in the first place and you'll always get the latest version.
 ```bash
-go install github.com/danielmiessler/fabric@latest
+go install -ldflags "-X main.version=$(git describe --tags --always)" github.com/danielmiessler/fabric@latest
 ```
 
 ## Usage
@@ -206,11 +233,18 @@ Application Options:
   -m, --model=                      Choose model
   -o, --output=                     Output to file
   -n, --latest=                     Number of latest patterns to list (default: 0)
-  -d, --changeDefaultModel          Change default pattern
-  -y, --youtube=                    YouTube video url to grab transcript, comments from it and send to chat
-      --transcript                  Grab transcript from YouTube video and send to chat
+  -d, --changeDefaultModel          Change default model
+  -y, --youtube=                    YouTube video "URL" to grab transcript, comments from it and send to chat
+      --transcript                  Grab transcript from YouTube video and send to chat (it used per default).
       --comments                    Grab comments from YouTube video and send to chat
+  -g, --language=                   Specify the Language Code for the chat, e.g. -g=en -g=zh
+  -u, --scrape_url=                 Scrape website URL to markdown using Jina AI
+  -q, --scrape_question=            Search question using Jina AI
+  -e, --seed=                       Seed to be used for LMM generation
+  -w, --wipecontext=                Wipe context
+  -W, --wipesession=                Wipe session
       --dry-run                     Show what would be sent to the model without actually sending it
+      --version                     Print current version
 
 Help Options:
   -h, --help                        Show this help message
@@ -254,7 +288,7 @@ pbpaste | fabric --stream --pattern analyze_claims
 3. Run the `extract_wisdom` Pattern with the `--stream` option to get immediate and streaming results from any Youtube video (much like in the original introduction video).
 
 ```bash
-yt --transcript https://youtube.com/watch?v=uXs-zPc63kM | fabric --stream --pattern extract_wisdom
+fabric -y "https://youtube.com/watch?v=uXs-zPc63kM" | --stream --pattern extract_wisdom
 ```
 
 4. Create patterns- you must create a .md file with the pattern and save it to ~/.config/fabric/patterns/[yourpatternname].
@@ -295,26 +329,6 @@ This feature works with all openai and ollama models but does NOT work with clau
 
 Fabric also makes use of some core helper apps (tools) to make it easier to integrate with your various workflows. Here are some examples:
 
-`yt` is a helper command that extracts the transcript from a YouTube video. You can use it like this:
-```bash
-yt https://www.youtube.com/watch?v=lQVcbY52_gY
-```
-
-This will return the transcript from the video, which you can then pipe into Fabric like this:
-```bash
-yt https://www.youtube.com/watch?v=lQVcbY52_gY | fabric --pattern extract_wisdom
-```
-
-### `yt` Installation
-
-To install `yt`, install it the same way as you install Fabric, just with a different repo name.
-
-```bash
-go install github.com/danielmiessler/yt@latest
-```
-
-Be sure to add your `YOUTUBE_API_KEY` to `~/.config/fabric/.env`.
-
 ### `to_pdf`
 
 `to_pdf` is a helper command that converts LaTeX files to PDF format. You can use it like this:
@@ -338,7 +352,7 @@ This will create a PDF file named `output.pdf` in the current directory.
 To install `to_pdf`, install it the same way as you install Fabric, just with a different repo name.
 
 ```bash
-go install github.com/danielmiessler/fabric/to_pdf/to_pdf@latest
+go install github.com/danielmiessler/fabric/to_pdf@latest
 ```
 
 Make sure you have a LaTeX distribution (like TeX Live or MiKTeX) installed on your system, as `to_pdf` requires `pdflatex` to be available in your system's PATH.

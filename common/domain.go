@@ -13,6 +13,7 @@ type ChatRequest struct {
 	PatternName      string
 	PatternVariables map[string]string
 	Message          string
+	Language         string
 }
 
 type ChatOptions struct {
@@ -22,6 +23,7 @@ type ChatOptions struct {
 	PresencePenalty  float64
 	FrequencyPenalty float64
 	Raw              bool
+	Seed             int
 }
 
 // NormalizeMessages remove empty messages and ensure messages order user-assist-user
