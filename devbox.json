@@ -14,7 +14,7 @@
         "cat $1 | fabric --model gpt-4o -sp extract_wisdom"
       ],
       "update-fabric": [
-        "go install github.com/danielmiessler/fabric@latest",
+        "go install -ldflags "-X main.version=$(git describe --tags --always)" github.com/danielmiessler/fabric@latest",
         "echo 'now close and restart your shell'"
       ]
     }
