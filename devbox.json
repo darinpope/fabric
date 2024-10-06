@@ -16,7 +16,6 @@
       "update-fabric": [
         "git pull",
         "go install -ldflags \"-X main.version=$(git describe --tags --always)\" github.com/danielmiessler/fabric@latest",
-        "echo 'now close and restart your shell'"
       ]
     }
   }
